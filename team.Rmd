@@ -10,10 +10,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-# (Danny) From my observation, there appears to be a relatively even distribution of happiness levels between both females and males, and it appears to show across all the education levels. 
+# (Danny) From my observation, there appears to be a relatively even distribution of happiness levels between both females and males, and it appears to show across all the education and marital status levels. 
 ```{r}
 #explore 4 variables
 ggplot(data = happy, aes(x = happy, fill = sex, color=as.factor(sex))) +
   geom_bar() + 
   facet_grid(. ~ degree)
+
+ggplot(data = happy, aes(x = happy, fill = sex, color=as.factor(sex))) +
+  geom_bar() + 
+  facet_grid(. ~ marital)
 ```

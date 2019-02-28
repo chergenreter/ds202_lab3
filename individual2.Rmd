@@ -33,13 +33,25 @@ ggplot(data = happy, aes(x = happy, fill = age, color=as.factor(age))) +
   geom_bar() + 
   facet_grid(. ~ degree)
 
+ggplot(data = happy, aes(x = happy, fill = age, color=as.factor(age))) +
+  geom_bar() + 
+  facet_grid(. ~ marital)
+
 ggplot(data = happy, aes(x = happy, fill = sex, color=as.factor(sex))) +
+  geom_bar() + 
+  facet_grid(. ~ degree)
+
+ggplot(data = happy, aes(x = happy, fill = sex, color=as.factor(sex))) +
+  geom_bar() + 
+  facet_grid(. ~ marital)
+
+ggplot(data = happy, aes(x = happy, fill = year, color=as.factor(year))) +
   geom_bar() + 
   facet_grid(. ~ degree)
 
 ggplot(data = happy, aes(x = happy, fill = year, color=as.factor(year))) +
   geom_bar() + 
-  facet_grid(. ~ degree)
+  facet_grid(. ~ marital)
 ```
 
-# From the data set, I can only interpret that the happiness levels vary if based on level of education. while there is a relatively larger number of data entries for high school, there appears to be a somewhat similar pattern of distribution among the different degree levels. While I believe I managed to convert the missing values to NA, tt does seem to show a small chunk of the data of people that didn't answer their happiness levels.
+# From the data set, I can only interpret that the happiness levels vary if based on level of education or marital status. While there is a relatively larger number of data entries for high school or married, there appears to be a somewhat similar pattern of distribution among the different degree and marital status levels. While I believe I managed to convert the missing values to NA, tt does seem to show a small chunk of the data of people that didn't answer their happiness levels.
