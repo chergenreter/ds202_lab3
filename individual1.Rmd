@@ -1,0 +1,66 @@
+---
+title: "individual1"
+author: "Connor Hergenreter"
+date: "February 21, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+##CLEANING
+
+##QUESTION 1
+
+```{r}
+HAPPY <- readRDS("HAPPY.rds")
+HAPPY <- HAPPY %>% mutate(POLVIEWS = replace(POLVIEWS, which(POLVIEWS=="IAP" | POLVIEWS=="DK" | POLVIEWS=="NA"), NA))
+head(HAPPY)
+```
+
+##QUESTION 2
+
+```{r}
+sapply(HAPPY, class)
+HAPPY <- HAPPY %>% mutate(AGE = replace(AGE, which(AGE =="89 OR OLDER"), "89")) %>% mutate_if(is.character, as.factor) %>% mutate(AGE = as.numeric(AGE)) %>% mutate(MARITAL = replace(MARITAL, which(is.na(MARITAL)), "single"))
+sapply(HAPPY, class)
+```
+
+##QUESTION 3
+
+```{r}
+HAPPYord <- HAPPY %>% mutate(MARITAL = factor(MARITAL, c("single", "Married", "divorced"))) %>% arrange(desc(AGE))
+head(HAPPYord)
+```
+
+##PART 2
+
+##QUESTION 1
+
+It appears that there has not been much of a change over time in the distribution of people being happy. The highest level of happy was from the 1993 to 2000 then it dropped off a bit. The level of not too happy never really changes in relation to the others.
+
+```{r}
+ggplot(HAPPY, aes(x = YEAR, fill=HAPPY)) + geom_bar(positions="fill")
+```
+
+Setting aside the happy factor it looks like those with at least a high school diploma manage to sit in the top three brackets of wealth in this data set.
+
+```{r}
+ggplot(HAPPY, aes(x = FINRELA, fill=DEGREE)) + geom_bar(positions="fill")
+```
+
+##QUESTION 2
+
+```{r}
+ggplot(data = HAPPY) + geom_mosaic(aes(x = product(SEX), fill="HAPPY")) + facet_grid(HEALTH~DEGREE)
+```
+
+##QUESTION 3
+
+Being happy looks like it has more that can affect it than the variables represented in this set. Money does seem to have a little bit of sway over it as well as the year. Health obviously has an affect too.
