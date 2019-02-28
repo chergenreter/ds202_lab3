@@ -1,0 +1,37 @@
+---
+title: "Individual2"
+author: "Danny Nguyen"
+date: "February 28, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+data(happy, package="productplots")
+head(happy)
+summary(happy, package="productplots")
+na.omit(happy$happy)
+typeof(happy$age)
+as.numeric(happy$age)
+head(happy)
+
+
+
+#explore 2 variables
+library(ggplot2)
+ggplot(data = happy, aes(x = happy, y = age)) + geom_point()
+ggplot(data = happy, aes(x = happy, fill = year, color=as.factor(year))) + geom_bar()
+
+#explore 4 variables
+ggplot(data = happy, aes(x = happy, fill = age, fill = year, color=as.factor(year))) +
+  geom_bar() + 
+  facet_grid(. ~ degree)
+
+
+```
+
+# From the data set, I can only interpret that the happiness levels vary based on level of education. while there is a relatively larger number of data entries for high school, there appears to be a somewhat similar pattern of distribution among the different degree levels. However, most of the data seems to come from the latter years of 1996 to 2006. While I believe I managed to convert the missing values to NA, It does seem to show many people 
