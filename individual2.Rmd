@@ -1,0 +1,57 @@
+---
+title: "Individual2"
+author: "Danny Nguyen"
+date: "February 28, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+data(happy, package="productplots")
+head(happy)
+summary(happy, package="productplots")
+na.omit(happy$happy)
+typeof(happy$age)
+as.numeric(happy$age)
+head(happy)
+
+
+
+#explore 2 variables
+library(ggplot2)
+ggplot(data = happy, aes(x = happy, fill = age, color=as.factor(age))) + geom_bar()
+ggplot(data = happy, aes(x = happy, fill = sex, color=as.factor(sex))) + geom_bar()
+ggplot(data = happy, aes(x = happy, fill = year, color=as.factor(year))) + geom_bar()
+
+
+#explore 4 variables
+ggplot(data = happy, aes(x = happy, fill = age, color=as.factor(age))) +
+  geom_bar() + 
+  facet_grid(. ~ degree)
+
+ggplot(data = happy, aes(x = happy, fill = age, color=as.factor(age))) +
+  geom_bar() + 
+  facet_grid(. ~ marital)
+
+ggplot(data = happy, aes(x = happy, fill = sex, color=as.factor(sex))) +
+  geom_bar() + 
+  facet_grid(. ~ degree)
+
+ggplot(data = happy, aes(x = happy, fill = sex, color=as.factor(sex))) +
+  geom_bar() + 
+  facet_grid(. ~ marital)
+
+ggplot(data = happy, aes(x = happy, fill = year, color=as.factor(year))) +
+  geom_bar() + 
+  facet_grid(. ~ degree)
+
+ggplot(data = happy, aes(x = happy, fill = year, color=as.factor(year))) +
+  geom_bar() + 
+  facet_grid(. ~ marital)
+```
+
+# From the data set, I can only interpret that the happiness levels vary if based on level of education or marital status. While there is a relatively larger number of data entries for high school or married, there appears to be a somewhat similar pattern of distribution among the different degree and marital status levels. While I believe I managed to convert the missing values to NA, tt does seem to show a small chunk of the data of people that didn't answer their happiness levels.
