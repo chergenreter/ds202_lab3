@@ -23,7 +23,7 @@ head(happy)
 
 #explore 2 variables
 library(ggplot2)
-ggplot(data = happy, aes(x = happy, y = age)) + geom_point()
+ggplot(data = happy, aes(x = happy, y = age, color=as.factor(happy))) + geom_point()
 ggplot(data = happy, aes(x = happy, fill = year, color=as.factor(year))) + geom_bar()
 
 #explore 4 variables
