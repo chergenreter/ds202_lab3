@@ -58,6 +58,7 @@ ggplot(HAPPY, aes(x = FINRELA, fill=DEGREE)) + geom_bar(positions="fill")
 ##QUESTION 2
 
 ```{r}
+library(ggmosaic)
 ggplot(data = HAPPY) + geom_mosaic(aes(x = product(SEX), fill="HAPPY")) + facet_grid(HEALTH~DEGREE)
 ```
 
